@@ -1,0 +1,49 @@
+<div class="container">
+  <nav class="navbar navbar-light mx-auto" style="margin-top: 10px;border-radius: 20px;background-color:#0081B4;">
+
+    <a class="navbar-brand mx-3" href="#">
+      <h1 style="color: aliceblue;">Bienvenue sur la file d'attente d'APITA BANK</h1>
+    </a>
+
+  </nav>
+</div>
+<br><br>
+<div class="card text-white mb-3 mx-auto" style="max-width: 60%;background-color: #0081B4;border: none;border-radius: 30px;">
+  <div class="card-header mt-0" style="background-color: aliceblue;opacity: 90%;border-radius: 29px 29px 0 0;">
+    <div class="position-relative d-flex">
+      <div class=" top-0 start-0"><h3 style="color:#0081B4;">Quelle operation voulez-vous faire ?</h3></div>
+      <div class="position-absolute top-0 end-0"><p style="color:#0081B4;">{{formattedDateTime }}</p></div>
+    </div>
+  </div>
+  <div class="card-body mt-2" >
+    <div class="container">
+      <div class="row row-cols-2 align-items-center" *ngFor="let service of service">
+      <form [formGroup]="ticketForm" *ngFor="let ticket of ticket">
+
+          <input type="hidden" formControlName="numero" [value]="numero" >
+            <div class="col">
+              <button type="submit" class="btn btn-light btn-lg" style="width: 80%;height: 70px;border-radius: 40px;" (click)="addTicket(service.nomService,ticket.numero,service.initService,false)" >
+                  <h2 style="color: #0081B4;font-size: 30px;line-height: 53px;"><b>{{ service.nomService }}</b></h2>
+                  <!-- <div #printSection>
+                      1 Versent
+                  </div> -->
+
+                </button>
+
+
+
+        </div>
+      </form>
+        <!-- <div class="col">
+          <button type="button" class="btn btn-light btn-lg" style="width: 90%;height: 70px;border-radius: 40px;">
+              <h2 style="color: #0081B4;font-size: 30px;line-height: 53px;"><b>RETRAIT</b></h2></button>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-light btn-lg" style="width: 90%;height: 70px;border-radius: 40px;">
+              <h2 style="color: #0081B4;font-size: 30px;line-height: 53px;"><b>PRIORITAIRE</b></h2></button>
+        </div> -->
+      </div>
+    </div>  <br>
+  </div>
+</div>
+

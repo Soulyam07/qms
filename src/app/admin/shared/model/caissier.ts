@@ -4,5 +4,6 @@ export interface ICaissier{
   passwordd:string,
   caisse:number,
   log:Date,
-  logD:Date
+  logD:Date,
+  role:string
 }

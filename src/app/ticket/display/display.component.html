@@ -1,0 +1,87 @@
+<nav class="navbar navbar-light mt-2 mx-auto" style="border-radius: 20px;background-color:#0081B4;width:98%">
+  <div class="container-fluid d-flex justify-content-start">
+    <h1 class="align-self-center text-white mx-2">APITA BANK</h1>
+  </div>
+</nav>
+
+<br>
+<div class="container">
+  <div class="row row-cols-2">
+    <div class="col-8">
+      <div class="card text-white mb-3 mx-auto" style="max-width: 100%;background-color: #0081B4;border: none;border-radius: 30px;">
+        <div class="card-header mt-0" style="background-color: aliceblue;opacity: 90%;border-radius: 29px 29px 0 0;">
+          <div class="d-flex justify-content-between" style="color: #0081B4;">
+            <h4>Client appele</h4>
+            <p class="align-self-center">Jeudi 02 Janvier 2023,12:20</p>
+          </div>
+        </div>
+        <div class="card-body mt-2">
+          <div class="container" >
+            <div class="row justify-content-center">
+              <div class="col-12 text-center">
+                <h2 class="text-center">EN SERVICE</h2>
+              </div>
+              <br><br>
+              <div class="col-12 text-center" *ngFor="let ticketE of ticketsE">
+                <button type="button" class="btn btn-light btn-lg" style="width: 250px;height: 250px;border-radius: 100%;" >
+                  <h2 style="color: #0081B4;font-size: 90px;line-height: 53px;"><b>{{ ticketE.numero }}</b></h2></button>
+              </div>
+              <br><br><br><br>
+              <div class="col-12 text-center pt-4">
+
+                <div class="row justify-content-md-center row-cols-auto">
+
+                  <div class="col-12 text-center">
+                    <h3>Veuillez passer a la</h3>
+                  </div>
+                  <div class="col">
+                    <p>Caisse {{ caissier.numero }}</p>
+                  </div>
+                </div>
+              </div>
+              <br>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-white mb-3 mx-auto" style="max-width: 100%;background-color: #0081B4;border: none;border-radius: 30px;">
+        <div class="card-header mt-0" style="background-color: aliceblue;opacity: 90%;border-radius: 29px 29px 0 0;">
+          <div class="d-flex justify-content-between" style="color: #0081B4;">
+            <h4>Fil d'attente</h4>
+
+          </div>
+        </div>
+        <div class="card-body mt-2" >
+          <div class="container">
+            <div class="row" >
+              <div class="col-12" *ngFor="let ticket of tickets">
+                <div class="d-flex justify-content-between">
+                  <h5>{{ ticket.numS }}</h5>
+                  <p class="align-self-center">{{ ticket.nameS }}</p>
+                </div>
+                <hr>
+                <br>
+              </div>
+
+
+
+
+
+
+              <br><br><br>
+              <div class="col-12 text-center">
+                <button type="button" class="btn btn-light btn-lg" style="width: 50px;height: 50px;border-radius: 100%;" >
+<!--                  <fa-icon [icon]="faChevronDown" style="color:#0081B4;width:50px;height: 50px;"></fa-icon>-->
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

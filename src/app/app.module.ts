@@ -13,6 +13,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './home/home/home.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ConnexionComponent } from './admin/component/connexion/connexion.component';
+import { DashboardComponent } from './admin/component/dashboard/dashboard.component';
+import { ListeAgentComponent } from './admin/component/agent/liste/liste-agent.component';
+import { AddAgentComponent } from './admin/component/agent/add/add-agent.component';
+import { EditAgentComponent } from './admin/component/agent/edit/edit-agent.component';
+import { EditServiceComponent } from './admin/component/service/edit/edit-service.component';
+import { AddServiceComponent } from './admin/component/service/add/add-service.component';
+import { ListeServiceComponent } from './admin/component/service/liste/liste-service.component';
+
+
 
 
 
@@ -23,7 +32,14 @@ import { ConnexionComponent } from './admin/component/connexion/connexion.compon
     CallComponent,
     DisplayComponent,
     HomeComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    DashboardComponent,
+    ListeAgentComponent,
+    AddAgentComponent,
+    EditAgentComponent,
+    EditServiceComponent,
+    AddServiceComponent,
+    ListeServiceComponent
 
   ],
   imports: [
