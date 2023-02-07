@@ -14,11 +14,10 @@ const routes:Routes =[
   { path:'',redirectTo:'home',pathMatch:'full'},
   {path:'ticket/kiosk',component:KioskComponent},
   {path:'ticket/callBy/:nomAcces',component:CallComponent},
-  {path:'ticket/display',component:DisplayComponent,data: { nomAcces: window.location.pathname }},
+  {path:'ticket/display',component:DisplayComponent},
   {path:'connexion',component:ConnexionComponent},
   {path:'dashboard/:nomAcces',component:DashboardComponent},
   
-
 ]
 
 @NgModule({

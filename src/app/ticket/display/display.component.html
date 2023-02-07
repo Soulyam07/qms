@@ -15,16 +15,16 @@
             <p class="align-self-center">Jeudi 02 Janvier 2023,12:20</p>
           </div>
         </div>
-        <div class="card-body mt-2">
-          <div class="container" >
-            <div class="row justify-content-center">
+        <div class="card-body mt-2" >
+          <div class="container" *ngIf="ticketsE.length == 1;else noData">
+            <div class="row justify-content-center" *ngFor="let ticketE of ticketsE">
               <div class="col-12 text-center">
                 <h2 class="text-center">EN SERVICE</h2>
               </div>
               <br><br>
-              <div class="col-12 text-center" *ngFor="let ticketE of ticketsE">
+              <div class="col-12 text-center" >
                 <button type="button" class="btn btn-light btn-lg" style="width: 250px;height: 250px;border-radius: 100%;" >
-                  <h2 style="color: #0081B4;font-size: 90px;line-height: 53px;"><b>{{ ticketE.numero }}</b></h2></button>
+                  <h2 style="color: #0081B4;font-size: 90px;line-height: 53px;"><b>{{ ticketE.numS }}</b></h2></button>
               </div>
               <br><br><br><br>
               <div class="col-12 text-center pt-4">
@@ -35,7 +35,7 @@
                     <h3>Veuillez passer a la</h3>
                   </div>
                   <div class="col">
-                    <p>Caisse {{ caissier.numero }}</p>
+                    <p>Caisse {{ ticketE.caissier }}</p> 
                   </div>
                 </div>
               </div>
@@ -43,6 +43,32 @@
 
             </div>
           </div>
+          <ng-template #noData>
+            <div class="row justify-content-center">
+              <div class="col-12 text-center">
+                <h2 class="text-center">EN SERVICE</h2>
+              </div>
+              <br><br>
+              <div class="col-12 text-center" >
+                <button type="button" class="btn btn-light btn-lg" style="width: 250px;height: 250px;border-radius: 100%;" >
+                  <h2 style="color: #0081B4;font-size: 70px;line-height: 43px;"><b>Neant</b></h2></button>
+              </div>
+              <br><br><br><br>
+              <div class="col-12 text-center pt-4">
+
+                <div class="row justify-content-md-center row-cols-auto">
+
+                  <div class="col-12 text-center">
+                    <h3>Veuillez passer a la</h3>
+                  </div>
+                  <div class="col">
+                    <p>Caisse Neant</p> 
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -65,12 +91,6 @@
                 <hr>
                 <br>
               </div>
-
-
-
-
-
-
               <br><br><br>
               <div class="col-12 text-center">
                 <button type="button" class="btn btn-light btn-lg" style="width: 50px;height: 50px;border-radius: 100%;" >
@@ -82,6 +102,7 @@
         </div>
       </div>
     </div>
+    
 
   </div>
 </div>

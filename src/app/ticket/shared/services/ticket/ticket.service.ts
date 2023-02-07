@@ -28,7 +28,16 @@ export class TicketService {
 
   //Voir ticket en service(en caisse)
   public getTicketE(nomAcces:any):Observable<any>{
-    const url = environment.API_EndPoint_TICKET + 'viewS.php?nomAcces='+nomAcces;
+    const url = environment.API_EndPoint_TICKET + 'viewS.php?caisse='+nomAcces;
+    return this.httpClient.get(url).pipe(
+      map(
+        tickets =>tickets
+      )
+    )
+
+  }
+  public getTicketEE():Observable<any>{
+    const url = environment.API_EndPoint_TICKET + 'viewSS.php';
     return this.httpClient.get(url).pipe(
       map(
         tickets =>tickets

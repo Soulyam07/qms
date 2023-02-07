@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,ViewChild} from '@angular/core';
 import {ServicesService} from "../shared/services/service/services.service";
 import {TicketService} from "../shared/services/ticket/ticket.service";
 import {interval, map, Observable, Subject, Subscription, switchMap} from "rxjs";
@@ -8,6 +8,7 @@ import {  Router,ActivatedRoute } from '@angular/router';
 import { CaissierService } from 'src/app/admin/shared/services/caisse/caissier.service';
 import { ICaissier } from 'src/app/admin/shared/model/caissier';
 import { ConnexionComponent } from 'src/app/admin/component/connexion/connexion.component';
+// import { ModalDirective } from 'ngx-bootstrap/modal'
 
 @Component({
   selector: 'app-display',
@@ -16,12 +17,14 @@ import { ConnexionComponent } from 'src/app/admin/component/connexion/connexion.
 })
 export class DisplayComponent implements OnInit{
   subscription!: Subscription;
+
   private socket$!: WebSocketSubject<any>;
   tickets:any=[];
   ticketsE:any=[];
 
   ticketSubscribe:any;
   caissier:any=[];
+  caissiers:any=[];
 
   ticketP$!:Observable<ITickets>;
   nomAcces!:string;
@@ -44,12 +47,7 @@ export class DisplayComponent implements OnInit{
     // }
   // }
 
-  console.log(this.caissierService.getCaissier().subscribe(
-    nomAcces =>{
-      this.nomAcces = nomAcces;
-    }
-  ))
-
+ 
   
 
     // this.subscription = this.log.loginId$.subscribe(
@@ -71,33 +69,41 @@ export class DisplayComponent implements OnInit{
         this.tickets = tickets;
       });
 
-      // interval(1000)
-      // .pipe(
-      //   switchMap(() => this.ticketService.getTicketE(nomAcces)),
-      //   map((ticketsE) => ticketsE))
-      // .subscribe((ticketsE) => {
-      //   this.ticketsE = ticketsE;
-      // });
+      interval(1000)
+      .pipe(
+        switchMap(() => this.ticketService.getTicketEE()),
+        map(
+          (ticketsE) => ticketsE),    
+        ).subscribe((ticketsE) => {
+          this.ticketsE = ticketsE;
+        });
+        
 
-      
-     this.last=this.activatedRoute.snapshot.queryParams['nomAcces'];
-      console.log(this.last);
-       
+   
 
+    
+
+  
 
   }
 
 
   public getT(){
-    this.ticketSubscribe = this.ticketService.getTicketE(this.activatedRoute.snapshot.queryParams['nomAcces']).subscribe(
+    this.ticketSubscribe = this.ticketService.getTicketEE().subscribe(
       res=>{
         this.ticketsE = res;
+        console.log(res.caissier)
       }
     )
+    
   }
 
  
+  public verif(){
+    console.log(this.ticketsE.caisse);
+  }
 
+  // @ViewChild('myModal', { static: false }) myModal: ModalDirective;
 
 
 

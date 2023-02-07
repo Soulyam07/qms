@@ -36,8 +36,6 @@ tickets:any=[];
       this.caissierService.loadLog(nomAcces).subscribe(
         res =>{
           this.caissier = res
-
-          
           
         });
         console.log(this.caissier);
@@ -70,14 +68,15 @@ tickets:any=[];
         }
       );
 
-
+        
       interval(1000)
       .pipe(
-        switchMap(() => this.ticketService.getTicketE(this.activatedRoute.snapshot.params['nomAcces'])),
+        switchMap(() => this.ticketService.getTicketE(this.caissier.caisse)),
         map((ticketsE) => ticketsE))
       .subscribe((ticketsE) => {
           this.ticketsE= ticketsE;
           this.showBadge = true;
+          
 
         }
       );
@@ -99,21 +98,21 @@ tickets:any=[];
 
   public showBadge=false;
 
-  callT(idT:any,numT:any,numCaisse:any,caissier:any){
-    
-    
+  callT(idT:any,numT:any,numCaisse:any){
+    this.startCounter();
+   numCaisse = this.caissier.caisse;
     this.playSound(numT,numCaisse);
       this.ticketUpForm = this.formBuilder.group({
         idT:[idT],
         Statuts:['E'],
-        caissier:[caissier],
+        caissier:[numCaisse],
       })
 
-      console.log(this.ticketUpForm.get('caissier')?.value)
+      console.log()
       let formData = new FormData();
       formData.append('idT',this.ticketUpForm.get('idT')?.value);
       formData.append('Statuts',this.ticketUpForm.get('Statuts')?.value);
-      formData.append('caissier',this.ticketUpForm.get('caissier')?.value);
+      formData.append('caisse',this.ticketUpForm.get('caissier')?.value);
       this.ticketService.updateTicket(formData).subscribe(
         res =>{
           if ((res.result === 'success')){
@@ -134,6 +133,7 @@ tickets:any=[];
 
       }
     );
+    
   }
 
   playSound(numT:number,numCaisse:number){
@@ -210,23 +210,21 @@ tickets:any=[];
   btnNext ='disabled';
   noTicketsF: any;
 
-  public okbtnClick(idT:number,caissier:string,numT:number,numCaisse:number,num:number){
-
-    console.log(num);
-    if(num != this.ticketUpForm.get('numero')?.value){
-     
+  
+  public okbtnClick(idT:number,numT:number,numCaisse:number){
+    this.stopCounter();
       this.playSound(numT,numCaisse);
       this.ticketUpForm = this.formBuilder.group({
         idT:[idT],
         Statuts:['S'],
-        caissier:[caissier],
+        caissier:[numCaisse],
       })
 
       console.log(this.ticketUpForm.get('caissier')?.value)
       let formData = new FormData();
       formData.append('idT',this.ticketUpForm.get('idT')?.value);
       formData.append('Statuts',this.ticketUpForm.get('Statuts')?.value);
-      formData.append('caissier',this.ticketUpForm.get('caissier')?.value);
+      formData.append('caisse',this.ticketUpForm.get('caissier')?.value);
       this.ticketService.updateTicket(formData).subscribe(
         res =>{
           if ((res.result === 'success')){
@@ -234,25 +232,25 @@ tickets:any=[];
           }
         }
       )
-    }
+    
     // this.btnNext !=this.btnNext;
 
   }
 
-  public recall(idT:number,caissier:string,numT:number,numCaisse:number){
+  public recall(idT:number,numT:number,numCaisse:number){
 
       this.playSoundR(numT,numCaisse);
       this.ticketUpForm = this.formBuilder.group({
         idT:[idT],
         Statuts:['W'],
-        caissier:[caissier],
+        caissier:[numCaisse],
       })
 
       console.log(this.ticketUpForm.get('caissier')?.value)
       let formData = new FormData();
       formData.append('idT',this.ticketUpForm.get('idT')?.value);
       formData.append('Statuts',this.ticketUpForm.get('Statuts')?.value);
-      formData.append('caissier',this.ticketUpForm.get('caissier')?.value);
+      formData.append('caisse',this.ticketUpForm.get('caissier')?.value);
       this.ticketService.updateTicket(formData).subscribe(
         res =>{
           if ((res.result === 'success')){
@@ -264,21 +262,21 @@ tickets:any=[];
     // this.btnNext !=this.btnNext;
 
   }
-  public notShowbtnClick(idT:number,caissier:string,numT:number,numCaisse:number){
-
+  public notShowbtnClick(idT:number,numT:number,numCaisse:number){
+    this.stopCounter();    
     this.playSound1(numT,numCaisse);
     // this.btnNext !=this.btnNext;
     this.ticketUpForm = this.formBuilder.group({
       idT:[idT],
       Statuts:['N'],
-      caissier:[caissier],
+      caissier:[numCaisse],
     })
 
     console.log(this.ticketUpForm.get('caissier')?.value)
     let formData = new FormData();
     formData.append('idT',this.ticketUpForm.get('idT')?.value);
     formData.append('Statuts',this.ticketUpForm.get('Statuts')?.value);
-    formData.append('caissier',this.ticketUpForm.get('caissier')?.value);
+    formData.append('caisse',this.ticketUpForm.get('caissier')?.value);
     this.ticketService.updateTicket(formData).subscribe(
       res =>{
         if ((res.result === 'success')){
@@ -288,20 +286,21 @@ tickets:any=[];
     )
 
   }
-  public nShowbtnClick(idT:number,caissier:string,numT:number,numCaisse:number){
+  public nShowbtnClick(idT:number,numT:number,numCaisse:number){
+    this.stopCounter();
     this.playSound2(numT,numCaisse);
     // this.btnNext !=this.btnNext;
     this.ticketUpForm = this.formBuilder.group({
       idT:[idT],
       Statuts:['P'],
-      caissier:[caissier],
+      caissier:[numCaisse],
     })
 
     console.log(this.ticketUpForm.get('caissier')?.value)
     let formData = new FormData();
     formData.append('idT',this.ticketUpForm.get('idT')?.value);
     formData.append('Statuts',this.ticketUpForm.get('Statuts')?.value);
-    formData.append('caissier',this.ticketUpForm.get('caissier')?.value);
+    formData.append('caisse',this.ticketUpForm.get('caissier')?.value);
     this.ticketService.updateTicket(formData).subscribe(
       res =>{
         if ((res.result === 'success')){
@@ -321,5 +320,18 @@ tickets:any=[];
   showContentTwo() {
     this.showContent1 = false;
     this.showContent2 = true;
+  }
+
+  counter = 0;
+  intervalId !:any;
+
+  startCounter() {
+    this.intervalId = setInterval(() => {
+      this.counter += 10;
+    }, 10);
+  }
+  stopCounter() {
+    clearInterval(this.intervalId);
+    this.counter = 0;
   }
 }

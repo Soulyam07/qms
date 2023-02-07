@@ -16,7 +16,7 @@
         <div class="card-header mt-0" style="background-color: aliceblue;opacity: 90%;border-radius: 29px 29px 0 0;">
           <div class="position-relative d-flex">
             <div class=" top-0 start-0"><h3 style="color:#0081B4;">APITA BANK</h3></div>
-            <div class="position-absolute top-0 end-0 align-self-center"><p style="color:#0081B4;">00:11:23</p></div>
+            <div class="position-absolute top-0 end-0 align-self-center"><p style="color:#0081B4;">{{ counter | date:'mm:ss:SS' }}</p></div>
           </div>
         </div>
         <div class="card-body mt-2" >
@@ -50,13 +50,13 @@
                       <div class="col-12 text-center pt-3">
                         <div class="row justify-content-md-center row-cols-auto">
                           <div class="col">
-                            <button type="submit" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #17DC2B;" (click)="okbtnClick(ticketF.idT,caissier.nomAcces,ticketF.numero,caissier.caisse,ticketF.numero)">
+                            <button type="submit" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #17DC2B;" (click)="okbtnClick(ticketF.idT,ticketF.numero,caissier.caisse)">
                               <!--                      <fa-icon [icon]="faCheck" style="color:aliceblue;"></fa-icon>-->
                               <i class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">done</i>
                             </button>
                           </div>
                           <div class="col">
-                            <button type="button" class="btn btn-light btn-lg" style="width: 80px;height: 80px;background-color:bisque;border-radius: 100%;" (click)="nShowbtnClick(ticketF.idT,caissier.nomAcces,ticketF.numero,caissier.caisse)">
+                            <button type="button" class="btn btn-light btn-lg" style="width: 80px;height: 80px;background-color:bisque;border-radius: 100%;" (click)="nShowbtnClick(ticketF.idT,ticketF.numero,caissier.caisse)">
                               <!--                      <fa-icon [icon]="faArrowRight" style="color:aliceblue"></fa-icon>-->
                               <i class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">east</i>
                             </button>
@@ -68,7 +68,7 @@
                             </button>
                           </div>
                           <div class="col">
-                            <button type="button" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #EABD08;" (click)="notShowbtnClick(ticketF.idT,caissier.nomAcces,ticketF.numero,caissier.caisse)">
+                            <button type="button" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #EABD08;" (click)="notShowbtnClick(ticketF.idT,ticketF.numero,caissier.caisse)">
                               <i class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">subdirectory_arrow_left</i>
                             </button>
                           </div>
@@ -114,7 +114,7 @@
 
 
                         <div class="col" *ngFor="let ticket of ticketsF">
-                          <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #1FC4E9;" (click)="callT(ticket.idT,ticket.numero,caissier.caisse,caissier.nomAcces);">
+                          <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #1FC4E9;" (click)="callT(ticket.idT,ticket.numero,caissier.caisse);">
                             <i class="material-icons" style="font-size: 46px; line-height: 46px;color: aliceblue">mic</i>
                           </button>
                         </div>
@@ -192,10 +192,10 @@
               <div class="row mt-4" >
                 <div class="col-12" *ngFor="let ticketD of ticketsD" style="border: none;">
                   <div class="d-flex justify-content-between">
-                    <button type="button" class="btn" *ngIf="ticketD.Statuts == 'P'" (click)="nShowbtnClick(ticketD.idT,caissier.nomAcces,ticketD.numero,caissier.caisse)" disabled>
+                    <button type="button" class="btn" *ngIf="ticketD.Statuts == 'P'" (click)="nShowbtnClick(ticketD.idT,ticketD.numero,caissier.caisse)" disabled>
                       <i class="material-icons" style="font-size: 26px; line-height: 26px;color: #1FC4E9">refresh</i>
                     </button>
-                    <button type="button" class="btn" *ngIf="ticketD.Statuts == 'N'" (click)="callT(ticketD.idT,ticketD.numero,caissier.caisse,caissier.nomAcces)">
+                    <button type="button" class="btn" *ngIf="ticketD.Statuts == 'N'" (click)="callT(ticketD.idT,ticketD.numero,caissier.caisse)">
                       <i class="material-icons" style="font-size: 26px; line-height: 26px;color: #1FC4E9">refresh</i>
                     </button>
 
