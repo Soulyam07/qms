@@ -29,6 +29,7 @@ export class DisplayComponent implements OnInit{
   ticketP$!:Observable<ITickets>;
   nomAcces!:string;
   last!:any;
+  ticketsA:any=[];
 
   constructor(private ticketService:TicketService,private activatedRoute:ActivatedRoute,private caissierService:CaissierService) {
   }
@@ -77,6 +78,15 @@ export class DisplayComponent implements OnInit{
         ).subscribe((ticketsE) => {
           this.ticketsE = ticketsE;
         });
+
+        interval(1000)
+        .pipe(
+          switchMap(() => this.ticketService.getAll()),
+          map(
+            (ticketsA) => ticketsA),    
+          ).subscribe((ticketsA) => {
+            this.ticketsA = ticketsA;
+          });
         
 
    

@@ -213,7 +213,7 @@ tickets:any=[];
   
   public okbtnClick(idT:number,numT:number,numCaisse:number){
     this.stopCounter();
-      this.playSound(numT,numCaisse);
+      // this.playSound(numT,numCaisse);
       this.ticketUpForm = this.formBuilder.group({
         idT:[idT],
         Statuts:['S'],
@@ -264,7 +264,7 @@ tickets:any=[];
   }
   public notShowbtnClick(idT:number,numT:number,numCaisse:number){
     this.stopCounter();    
-    this.playSound1(numT,numCaisse);
+    // this.playSound1(numT,numCaisse);
     // this.btnNext !=this.btnNext;
     this.ticketUpForm = this.formBuilder.group({
       idT:[idT],
@@ -288,7 +288,7 @@ tickets:any=[];
   }
   public nShowbtnClick(idT:number,numT:number,numCaisse:number){
     this.stopCounter();
-    this.playSound2(numT,numCaisse);
+    // this.playSound2(numT,numCaisse);
     // this.btnNext !=this.btnNext;
     this.ticketUpForm = this.formBuilder.group({
       idT:[idT],

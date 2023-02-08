@@ -1,49 +1,46 @@
-<div class="container">
-  <nav class="navbar navbar-light mx-auto" style="margin-top: 10px;border-radius: 20px;background-color:#0081B4;">
-
-    <a class="navbar-brand mx-3" href="#">
-      <h1 style="color: aliceblue;">Bienvenue sur la file d'attente d'APITA BANK</h1>
-    </a>
-
-  </nav>
-</div>
-<br><br>
-<div class="card text-white mb-3 mx-auto" style="max-width: 60%;background-color: #0081B4;border: none;border-radius: 30px;">
-  <div class="card-header mt-0" style="background-color: aliceblue;opacity: 90%;border-radius: 29px 29px 0 0;">
-    <div class="position-relative d-flex">
-      <div class=" top-0 start-0"><h3 style="color:#0081B4;">Quelle operation voulez-vous faire ?</h3></div>
-      <div class="position-absolute top-0 end-0"><p style="color:#0081B4;">{{formattedDateTime }}</p></div>
+  <div class="d-flex justify-content-center mt-5">
+  <img src="../../../../assets/img/cbao.png" alt="" width="200" height="80" class="d-inline-block align-text-top">
+  <div class="card mx-5 w-50" style="border-color: tomato;border-width: 5px;border-top-left-radius: 20px;">
+    <div class="body mx-5 text-end pb-3 me-3">
+      <h3 style="color: tomato;" class="align-self-center mt-3">Bienvenue tres chers clients</h3>
     </div>
   </div>
-  <div class="card-body mt-2" >
-    <div class="container">
-      <div class="row row-cols-2 align-items-center" *ngFor="let service of service">
-      <form [formGroup]="ticketForm" *ngFor="let ticket of ticket">
-
-          <input type="hidden" formControlName="numero" [value]="numero" >
-            <div class="col">
-              <button type="submit" class="btn btn-light btn-lg" style="width: 80%;height: 70px;border-radius: 40px;" (click)="addTicket(service.nomService,ticket.numero,service.initService,false)" >
-                  <h2 style="color: #0081B4;font-size: 30px;line-height: 53px;"><b>{{ service.nomService }}</b></h2>
-                  <!-- <div #printSection>
-                      1 Versent
-                  </div> -->
-
-                </button>
-
-
-
-        </div>
-      </form>
-        <!-- <div class="col">
-          <button type="button" class="btn btn-light btn-lg" style="width: 90%;height: 70px;border-radius: 40px;">
-              <h2 style="color: #0081B4;font-size: 30px;line-height: 53px;"><b>RETRAIT</b></h2></button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-light btn-lg" style="width: 90%;height: 70px;border-radius: 40px;">
-              <h2 style="color: #0081B4;font-size: 30px;line-height: 53px;"><b>PRIORITAIRE</b></h2></button>
-        </div> -->
-      </div>
-    </div>  <br>
-  </div>
 </div>
 
+<div class="card w-50 mx-auto mt-5" style="border-color: tomato;border-width: 5px;border-radius: 10px;">
+  <div class="card-header text-white d-flex justify-content-between" style="background-color: tomato;">
+    <h3>Quelle operation voulez-vous faire ?</h3>
+    <p class="align-self-center">{{formattedDateTime | date}}</p>
+  </div>
+  <div class="card-body" >
+    <div class="card-group text-center" >
+      <div class="card" *ngFor="let service of service" style="border:none">
+        <form [formGroup]="ticketForm" *ngFor="let ticket of ticket">
+          <input type="hidden" formControlName="numero" [value]="numero" >
+        <button type="button" *ngIf="service.initService == 'V'" class="btn btn-light btn-lg mx-auto" style="width: 80%;height: 120px;border-radius: 10px;" (click)="addTicket(service.nomService,ticket.numero,service.initService,false)" >
+          <img src="../../../assets/img/versement.png" alt="" width="50" height="50">
+          <h4 class="mt-2" style="color: tomato;"><b>{{ service.nomService }}</b></h4>
+          <!-- <div #printSection>
+              1 Versent
+          </div> -->
+        </button> 
+        <button type="button" *ngIf="service.initService == 'R'" class="btn btn-light btn-lg mx-auto" style="width: 80%;height: 120px;border-radius: 10px;" (click)="addTicket(service.nomService,ticket.numero,service.initService,false)" >
+          <img src="../../../assets/img/versement.png" alt="" width="50" height="50">
+          <h4 class="mt-2" style="color: tomato;"><b>{{ service.nomService }}</b></h4>
+          <!-- <div #printSection>
+              1 Versent
+          </div> -->
+        </button>
+        <button type="button" *ngIf="service.initService == 'P'" class="btn btn-light btn-lg mx-auto" style="width: 80%;height: 120px;border-radius: 10px;" (click)="addTicket(service.nomService,ticket.numero,service.initService,false)" >
+          <img src="../../../assets/img/versement.png" alt="" width="50" height="50">
+          <h4 class="mt-2" style="color: tomato;"><b>{{ service.nomService }}</b></h4>
+          <!-- <div #printSection>
+              1 Versent
+          </div> -->
+        </button>   
+      </form>
+             
+      </div>
+    </div>
+  </div>
+</div>

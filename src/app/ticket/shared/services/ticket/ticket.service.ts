@@ -82,6 +82,14 @@ export class TicketService {
       )
     )
   }
+  public getAll():Observable<any>{
+    const url = environment.API_EndPoint_TICKET + 'viewAll.php';
+    return this.httpClient.get(url).pipe(
+      map(
+        tickets =>tickets
+      )
+    )
+  }
 
   //  addTicket(data:any):Observable<HttpResponse>{
   //   const url = environment.API_EndPoint_TICKET + 'create.php';
