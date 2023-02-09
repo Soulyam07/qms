@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center mt-5">
+<!-- <div class="d-flex justify-content-center mt-5">
   <img src="../../../../assets/img/cbao.png" alt="" width="200" height="80" class="d-inline-block align-text-top">
   <div class="card mx-5 w-50" style="border-color: tomato;border-width: 5px;border-top-left-radius: 20px;">
     <div class="mx-5 pb-3 me-3 d-flex justify-content-end">
@@ -11,13 +11,28 @@
       </a>
     </div>
   </div>
+</div> -->
+
+<div class="d-flex justify-content-start mt-5 mx-5">
+  <img src="../../../../assets/img/cbao.png" alt="" width="300" height="100" class="d-inline-block align-text-top" style="margin-right: 50px;">
+  <div class="card w-100" style="border-color:#ED4235;border-width: 5px;border-top-left-radius: 20px;background-color: #ED4235;height: 80px;max-height:80px;">
+    <div class="mx-5 pb-3 me-3 d-flex justify-content-end">
+      <h5 class="align-self-center mt-3" style="color:aliceblue">{{ caissier.nomComp }}</h5>
+      <span class="material-icons align-self-center mt-3" style="color: aliceblue;">
+        expand_more
+        </span>
+      <a class="navbar-brand mx-2 mt-2" href="#">
+        <img src="../../../assets/img/im_1.JPG"  width="50" height="50" class="float-end" style="border-radius: 100%;">
+      </a>
+    </div>
+  </div>
 </div>
 
 
 <div class="row mb-5">
   <div class="col">
-<div class="card w-50 mx-auto mt-5" style="border-color: tomato;border-width: 5px;border-radius: 10px;">
-      <div class="card-header text-white d-flex justify-content-between" style="background-color: tomato;">
+<div class="card w-75 mx-auto mt-5" style="border-color: #ED4235;border-width: 5px;border-radius: 10px;">
+      <div class="card-header text-white d-flex justify-content-between" style="background-color: #ED4235;">
         <h4>Caisse {{ caissier.caisse }} </h4>
         <p class="align-self-center">{{ counter | date:'mm:ss:SS' }}</p>
       </div>
@@ -29,11 +44,11 @@
             <div class="container" >
               <div class="row justify-content-center"  >
                 <div class="col-12 text-center">
-                  <h2 class="text-center" style="color: tomato;">EN SERVICE</h2>
+                  <h2 class="text-center" style="color: #ED4235">EN SERVICE</h2>
                 </div>
                 <br><br>
                 <div class="col-12 text-center" >
-                  <button type="button" class="btn btn-lg" style="background-color: tomato;width: 250px;height: 250px;border-radius: 100%;border: none;" disabled>
+                  <button type="button" class="btn btn-lg" style="background-color: #ED4235;width: 250px;height: 250px;border-radius: 100%;border: none;" disabled>
                     <h2 style="color: aliceblue;font-size: 90px;line-height: 53px;"><b>{{ ticketF.numS}}</b></h2> </button>
                 </div>
                 <br><br><br><br>
@@ -71,7 +86,7 @@
                       </button>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #1FC4E9;" (click)="playSound(ticketF.numero,caissier.caisse);">
+                      <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: blue;" (click)="playSound(ticketF.numero,caissier.caisse);">
                         <!--                      <fa-icon [icon]="faMicrophone" style="color:aliceblue;"></fa-icon>-->
                         <i class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">mic</i>
                       </button>
@@ -101,16 +116,16 @@
           <div class="container" >
             <div class="row justify-content-center" >
               <div class="col-12 text-center">
-                <h2 class="text-center" style="color: tomato;">EN SERVICE</h2>
+                <h2 class="text-center" style="color: #ED4235;">EN SERVICE</h2>
               </div>
               <br><br>
               <div class="col-12 text-center" >
-                <button type="button" class="btn  btn-lg" style="width: 250px;height: 250px;border-radius: 100%;background-color: tomato;border: none;" disabled>
+                <button type="button" class="btn  btn-lg" style="width: 250px;height: 250px;border-radius: 100%;background-color: #ED4235;border: none;" disabled>
                   <h2 style="color: aliceblue;font-size: 50px;line-height: 53px;"><b>Neant</b></h2> </button>
               </div>
               <br><br><br><br>
               <div class="col-12 text-center pt-4" >
-                <div class="row justify-content-md-center row-cols-auto" style="color: tomato;">
+                <div class="row justify-content-md-center row-cols-auto" style="color: #ED4235">
                   <div class="col">
                     <h5>Nean</h5>
                   </div>
@@ -126,7 +141,7 @@
 
 
                   <div class="col" *ngFor="let ticket of ticketsF">
-                    <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #1FC4E9;" (click)="callT(ticket.idT,ticket.numero,caissier.caisse);">
+                    <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: blue;" (click)="callT(ticket.idT,ticket.numero,caissier.caisse);">
                       <!-- <i class="material-icons" style="font-size: 46px; line-height: 46px;color: aliceblue">mic</i> -->
                       <span class="material-icons" style="font-size: 46px; line-height: 46px;color: aliceblue">
                         call_made
@@ -153,7 +168,7 @@
   </div>
   <div class="col-1 " >
     <button class="btn mt-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-      <i class="material-icons" style="font-size: 30px; line-height: 30px;color: #1FC4E9">tune</i>
+      <i class="material-icons" style="font-size: 30px; line-height: 30px;color: #ED4235">tune</i>
     </button>
 
 

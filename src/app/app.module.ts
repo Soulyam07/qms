@@ -20,6 +20,9 @@ import { EditAgentComponent } from './admin/component/agent/edit/edit-agent.comp
 import { EditServiceComponent } from './admin/component/service/edit/edit-service.component';
 import { AddServiceComponent } from './admin/component/service/add/add-service.component';
 import { ListeServiceComponent } from './admin/component/service/liste/liste-service.component';
+import { ListeComponent } from './admin/component/caissier/liste/liste.component';
+import { AddComponent } from './admin/component/caissier/add/add.component';
+import { EditComponent } from './admin/component/caissier/edit/edit.component';
 
 
 
@@ -39,7 +42,10 @@ import { ListeServiceComponent } from './admin/component/service/liste/liste-ser
     EditAgentComponent,
     EditServiceComponent,
     AddServiceComponent,
-    ListeServiceComponent
+    ListeServiceComponent,
+    ListeComponent,
+    AddComponent,
+    EditComponent
 
   ],
   imports: [

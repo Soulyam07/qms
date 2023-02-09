@@ -40,4 +40,14 @@ export class DashboardComponent implements OnInit {
       }
     )
   }
+
+  getAgent(){
+      this.routes.navigate(['agent/liste']);
+  }
+  getService(){
+    this.routes.navigate(['service/liste']);
+  }
+  getCaissier(){
+    this.routes.navigate(['caissier/liste']);
+  }
 }

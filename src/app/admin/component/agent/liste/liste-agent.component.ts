@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-agent',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class ListeAgentComponent {
 
+  constructor(private routes:Router){
+
+  }
+
+  getService(){
+    this.routes.navigate(['service/liste']);
+  }
+  getCaissier(){
+    this.routes.navigate(['caisse/liste']);
+  }
+  // goDashboard(){
+  //   this.routes.navigate(['caisse/liste']);
+  // }
+  
 }
