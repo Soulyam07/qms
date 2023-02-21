@@ -98,7 +98,7 @@
 </div> -->
 
 <!-- <div class="card w-75 mt-5 mx-auto" > *ngIf="ticketsE.length == 1;else noData" -->
-  <div class="card w-75 mt-5 mx-auto" >
+  <div class="card w-75 mt-5 mx-auto" *ngIf="ticketsE.length == 1;else noData" >
     <div class="card-body" style="background-color: #F6B616;border: none;" *ngFor="let ticketE of ticketsE">
       <div class="d-flex justify-content-between">
         <div class="arrow-box">
@@ -123,6 +123,34 @@
 
     </div>
 </div>
+
+<ng-template #noData>
+<div class="card w-75 mt-5 mx-auto" >
+  <div class="card-body" style="background-color: #F6B616;border: none;" *ngFor="let ticketE of ticketsE">
+    <div class="d-flex justify-content-between">
+      <div class="arrow-box">
+        <div class="arrow-box-rectangle">
+          <h1 class="card-title text-center" style="font-size: 150px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color: aliceblue;">0000</h1>
+        </div>
+        <div class="arrow-box-arrow"></div>
+      </div>
+      <div class="align-self-start">
+        <div class="card">
+          <div class="card-body" style="background-color: aliceblue;border: none;width: 200px;height: 200px;">
+            <div class="row">
+              <div class="col"><h1>GUICHET</h1></div>
+              <div class="col text-center" style="margin-top: -3%;">
+                <h2 style="font-size: 100px;">00</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</ng-template>
 
 
 <!-- <ng-template #noData>
