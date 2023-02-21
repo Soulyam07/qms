@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {IService} from "../shared/model/services";
 import { ActivatedRoute } from '@angular/router';
 import { CaissierService } from 'src/app/admin/shared/services/caisse/caissier.service';
+import { interval, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-kiosk',
@@ -17,6 +18,7 @@ export class KioskComponent implements OnInit{
   serviceSubscribe:any;
   ticket:any=[];
   ticketSubscribe:any;
+  tickets:any=[];
 
   caissier:any=[];
 
@@ -45,6 +47,14 @@ export class KioskComponent implements OnInit{
   public ngOnInit() {
     this.getS();
     this.getLastT();
+    interval(1000)
+    .pipe(
+      switchMap(() => this.ticketService.getAllTicket()),
+      map((tickets) => tickets))
+    .subscribe((tickets) => {
+      this.tickets = tickets;
+
+    });
 
     this.ticketForm = this.formBuilder.group(
       {
@@ -82,6 +92,7 @@ export class KioskComponent implements OnInit{
   }
   numero :number=0;
   addTicket(nameS:string,num:number,initS:string,isUpdate:any){
+    
     this.numero++;
     num = num+this.numero;
     initS = initS+"-"+num;

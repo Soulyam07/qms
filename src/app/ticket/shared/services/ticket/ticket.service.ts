@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable,EventEmitter } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable, Subject} from "rxjs";
+import {BehaviorSubject, map, Observable, Subject} from "rxjs";
 import {environment} from "../../../../../environments/environment";
 import {HttpResponse } from "../../model/http-response";
 
@@ -28,7 +28,16 @@ export class TicketService {
 
   //Voir ticket en service(en caisse)
   public getTicketE(nomAcces:any):Observable<any>{
-    const url = environment.API_EndPoint_TICKET + 'viewS.php?nomAcces='+nomAcces;
+    const url = environment.API_EndPoint_TICKET + 'viewS.php?caisse='+nomAcces;
+    return this.httpClient.get(url).pipe(
+      map(
+        tickets =>tickets
+      )
+    )
+
+  }
+  public getTicketEE():Observable<any>{
+    const url = environment.API_EndPoint_TICKET + 'viewSS.php';
     return this.httpClient.get(url).pipe(
       map(
         tickets =>tickets
@@ -73,6 +82,14 @@ export class TicketService {
       )
     )
   }
+  public getAll():Observable<any>{
+    const url = environment.API_EndPoint_TICKET + 'viewAll.php';
+    return this.httpClient.get(url).pipe(
+      map(
+        tickets =>tickets
+      )
+    )
+  }
 
   //  addTicket(data:any):Observable<HttpResponse>{
   //   const url = environment.API_EndPoint_TICKET + 'create.php';
@@ -96,5 +113,7 @@ export class TicketService {
         map(data=>data,this.ticketSubject.next(data))
       )
     }
+
+    
 
 }

@@ -50,7 +50,7 @@ export class CaissierService {
       map(
         
         data=>data,
-        this.loginIdSubject.next(nomAcces)
+        // this.loginIdSubject.next(nomAcces)
 
         ),
         
