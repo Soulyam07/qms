@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-start mt-5 mx-5">
+<!-- <div class="d-flex justify-content-start mt-5 mx-5">
   <img src="../../../../assets/img/cbao.png" alt="" width="300" height="100" class="d-inline-block align-text-top" style="margin-right: 50px;">
   <div class="card w-100" style="border-color:#ED4235;border-width: 5px;border-top-left-radius: 20px;background-color: #ED4235;height: 80px;max-height:80px;">
     <div class="body mx-5 text-end pb-3 me-3">
@@ -12,7 +12,7 @@
 <div class="card w-75 mx-5 mt-5 " style="border-color: #ED4235;border-width: 5px;border-radius: 10px;max-height: 460px;">
   <div class="card-header text-white d-flex justify-content-between" style="background-color: #ED4235;">
     <h4>Client appele</h4>
-    <!-- <p class="align-self-center">Jeudi 02 Janvier 2023,12:20</p> -->
+  
   </div>
   <div class="card-body" >
     <div class="container" *ngIf="ticketsE.length == 1;else noData">
@@ -67,25 +67,7 @@
   </div>
   </div>
   <div class="col-4 mt-5">
-    <!-- <div class="card text-white mb-3 mx-auto" style="max-width: 100%;background-color: #0081B4;border: none;border-radius: 30px;">
-      <div class="card-body mt-2" >
-        <div class="container">
-          <div class="row" >
-            <div class="col-12" *ngFor="let ticket of ticketsA">
-              <div class="d-flex justify-content-between">
-                <h5>{{ ticket.numS }}</h5>
-                <p class="align-self-center">{{ ticket.nameS }}</p>
-              </div>
-              <hr>
-              <br>
-            </div>
-            <br><br><br>
-          
-          </div>
-        </div>
-        
-      </div>
-    </div> -->
+ 
    <div class="card me-5" style="border-color: #ED4235;border-width: 5px;border-radius: 10px;margin-left: -100px;height: 460px;">
     <div class="card-body" style="height: 460px;max-height: 460px;">
       <div class="card w-75 mx-auto mb-2 " *ngFor="let ticket of ticketsA" style="border-color: #ED4235;border-width: 5px;border-radius: 10px;">       
@@ -104,7 +86,7 @@
          </div>
          <div *ngIf="ticket.Statuts=='E'" class="d-flex justify-content-center text-center">
           <i class="material-icons" style="color: darkgreen">check</i>
-          <!-- <p class="card-text align-self-center" style="color: darkgreen"><b>En Caisse</b></p> -->
+        
            <p class="card-text align-self-center" *ngIf="ticket.caissier !==0" style="color: darkgreen"><b>En Caisse {{ ticket.caissier}}</b></p>
           <p class="card-text align-self-center" *ngIf="ticket.caissier === 0"></p>
          </div>
@@ -113,4 +95,59 @@
     </div>
    </div>
   </div>
+</div> -->
+
+<!-- <div class="card w-75 mt-5 mx-auto" > *ngIf="ticketsE.length == 1;else noData" -->
+  <div class="card w-75 mt-5 mx-auto" >
+    <div class="card-body" style="background-color: #F6B616;border: none;" *ngFor="let ticketE of ticketsE">
+      <div class="d-flex justify-content-between">
+        <div class="arrow-box">
+          <div class="arrow-box-rectangle">
+            <h1 class="card-title text-center" style="font-size: 150px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color: aliceblue;">00{{ ticketE.numero }}</h1>
+          </div>
+          <div class="arrow-box-arrow"></div>
+        </div>
+        <div class="align-self-start">
+          <div class="card">
+            <div class="card-body" style="background-color: aliceblue;border: none;width: 200px;height: 200px;">
+              <div class="row">
+                <div class="col"><h1>GUICHET</h1></div>
+                <div class="col text-center" style="margin-top: -3%;">
+                  <h2 style="font-size: 100px;">0{{ ticketE.caissier }}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 </div>
+
+
+<!-- <ng-template #noData>
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <h2 class="text-center" style="color: #ED4235">EN SERVICE</h2>
+    </div>
+    <br><br>
+    <div class="col-12 text-center" >
+      <button type="button" class="btn btn-light btn-lg" style="width: 250px;height: 250px;border-radius: 100%;background-color: #ED4235" >
+        <h2 style="color: aliceblue;font-size: 70px;line-height: 43px;"><b>Neant</b></h2></button>
+    </div>
+    <br><br><br><br>
+    <div class="col-12 text-center pt-4">
+
+      <div class="row justify-content-md-center row-cols-auto">
+
+        <div class="col-12 text-center">
+          <h3 style="color: #ED4235">Veuillez passer a la Caisse Neant</h3>
+        </div>
+       
+      </div>
+    </div>
+    <br>
+  </div>
+</ng-template> -->
+
+
