@@ -100,10 +100,12 @@
                       </button>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #EABD08;" (click)="callRecp(ticketF.idT,ticketF.numero,caissier.caisse)">
+                      <button type="button" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: dimgray;" (click)="callRecp(ticketF.idT,ticketF.numero,caissier.caisse)">
                         <!-- <i class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">subdirectory_arrow_left</i> -->
                         <span class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">
-                          autorenew
+                          
+                            account_balance_wallet
+                            
                           </span>
                       </button>
                     </div>
@@ -218,7 +220,7 @@
                     <p class="" style="color: blue">En attente</p>
                   </button>
                   <button type="button" class="btn align-self-center" *ngIf="ticket.Statuts == 'C'" disabled style="border: none">
-                    <p class="" style="color: blue">Wallet</p>
+                    <p class="" style="color: #EABD08">Wallet</p>
                   </button>
                 </div>
                 <hr>
@@ -265,7 +267,7 @@
                     <p class="" style="color: blue">En caisse</p>
                   </button>
                   <button type="button" class="btn" *ngIf="ticketD.Statuts == 'C'" disabled style="border: none">
-                    <p class="" style="color: blue">Retrait code</p>
+                    <p class="" style="color: #EABD08">Retrait code</p>
                   </button>
 
 

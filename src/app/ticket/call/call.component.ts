@@ -124,7 +124,7 @@ tickets:any=[];
   callRecp(idT:any,numT:any,numCaisse:any){
     this.startCounter();
    numCaisse = this.caissier.caisse;
-    this.playSound(numT,numCaisse);
+   
       this.ticketUpForm = this.formBuilder.group({
         idT:[idT],
         Statuts:['C'],
