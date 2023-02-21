@@ -92,6 +92,7 @@ export class KioskComponent implements OnInit{
   }
   numero :number=0;
   addTicket(nameS:string,num:number,initS:string,isUpdate:any){
+    
     this.numero++;
     num = num+this.numero;
     initS = initS+"-"+num;

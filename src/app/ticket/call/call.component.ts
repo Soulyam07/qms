@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {CaissierService} from "../../admin/shared/services/caisse/caissier.service";
 import {ICaissier} from "../../admin/shared/model/caissier";
-import {interval, map, switchMap} from "rxjs";
+import {interval, map, Subject, switchMap} from "rxjs";
 import {TicketService} from "../shared/services/ticket/ticket.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
+import { SoundService } from '../shared/services/sound.service';
 
 @Component({
   selector: 'app-call',
@@ -21,13 +22,12 @@ tickets:any=[];
 
   public ticketUpForm!:FormGroup;
   constructor(private caissierService:CaissierService,private ticketService:TicketService,private formBuilder:FormBuilder,
-    private activatedRoute:ActivatedRoute ,
+    private activatedRoute:ActivatedRoute,private soundService:SoundService
     ) {
   }
   prevnomAcces!:string;
   ngOnInit() {
-    this.getLast();
-
+   
     let nomAcces ='';
     if(this.activatedRoute.snapshot.params['nomAcces']){
       nomAcces = this.activatedRoute.snapshot.params['nomAcces'];
@@ -55,7 +55,6 @@ tickets:any=[];
         map((tickets) => tickets))
       .subscribe((tickets) => {
         this.tickets = tickets;
-
       });
 
     interval(1000)
@@ -92,7 +91,7 @@ tickets:any=[];
       this.caissier = res;
 
     });
-    console.log(this.caissier);
+   
   }
 
 
@@ -121,7 +120,30 @@ tickets:any=[];
         }
       )
 
-     
+  }
+  callRecp(idT:any,numT:any,numCaisse:any){
+    this.startCounter();
+   numCaisse = this.caissier.caisse;
+    this.playSound(numT,numCaisse);
+      this.ticketUpForm = this.formBuilder.group({
+        idT:[idT],
+        Statuts:['C'],
+        caissier:[numCaisse],
+      })
+
+      console.log()
+      let formData = new FormData();
+      formData.append('idT',this.ticketUpForm.get('idT')?.value);
+      formData.append('Statuts',this.ticketUpForm.get('Statuts')?.value);
+      formData.append('caisse',this.ticketUpForm.get('caissier')?.value);
+      this.ticketService.updateTicket(formData).subscribe(
+        res =>{
+          if ((res.result === 'success')){
+            console.log("Aight man !!!!");
+          }
+        }
+      )
+
   }
   call(){
     interval(1000)
@@ -334,4 +356,8 @@ tickets:any=[];
     clearInterval(this.intervalId);
     this.counter = 0;
   }
+
+ 
+
+
 }

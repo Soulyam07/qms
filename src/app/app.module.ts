@@ -54,9 +54,10 @@ import { EditComponent } from './admin/component/caissier/edit/edit.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

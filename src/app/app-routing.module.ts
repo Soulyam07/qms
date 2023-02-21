@@ -19,6 +19,7 @@ import { AddComponent } from "./admin/component/caissier/add/add.component";
 
 
 const routes:Routes =[
+  
   {path:'home',component:HomeComponent},
   { path:'',redirectTo:'home',pathMatch:'full'},
   {path:'ticket/kiosk',component:KioskComponent},

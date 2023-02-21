@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable,EventEmitter } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable, Subject} from "rxjs";
+import {BehaviorSubject, map, Observable, Subject} from "rxjs";
 import {environment} from "../../../../../environments/environment";
 import {HttpResponse } from "../../model/http-response";
 
@@ -113,5 +113,7 @@ export class TicketService {
         map(data=>data,this.ticketSubject.next(data))
       )
     }
+
+    
 
 }

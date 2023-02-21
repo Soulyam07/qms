@@ -86,7 +86,7 @@
                       </button>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: blue;" (click)="playSound(ticketF.numero,caissier.caisse);">
+                      <button type="button" class="btn btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: blue;" >
                         <!--                      <fa-icon [icon]="faMicrophone" style="color:aliceblue;"></fa-icon>-->
                         <i class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">mic</i>
                       </button>
@@ -99,6 +99,15 @@
                           </span>
                       </button>
                     </div>
+                    <div class="col">
+                      <button type="button" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #EABD08;" (click)="callRecp(ticketF.idT,ticketF.numero,caissier.caisse)">
+                        <!-- <i class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">subdirectory_arrow_left</i> -->
+                        <span class="material-icons" style="font-size: 50px; line-height: 50px;color: aliceblue">
+                          autorenew
+                          </span>
+                      </button>
+                    </div>
+                    
                     <!--                  <div class="col">-->
                     <!--                    <button type="button" class="btn  btn-lg" style="width: 80px;height: 80px;border-radius: 100%;background-color: #D23939;" >-->
                     <!--&lt;!&ndash;                      <fa-icon [icon]="faShare" style="color:aliceblue;"></fa-icon>&ndash;&gt;-->
@@ -201,10 +210,15 @@
             <div class="row mt-4" >
               <div class="col-12" *ngFor="let ticket of tickets">
                 <div class="d-flex justify-content-between">
-
-                  <h5>{{ ticket.numS }}</h5>
+                  <button type="button" class="btn" *ngIf="ticket.Statuts == 'C'" (click)="callT(ticket.idT,ticket.numero,caissier.caisse)">
+                    <i class="material-icons" style="font-size: 26px; line-height: 26px;color: #1FC4E9">history</i>
+                  </button>
+                  <h5 class="align-self-center">{{ ticket.numS }}</h5>
                   <button type="button" class="btn align-self-center" *ngIf="ticket.Statuts == 'W'" disabled style="border: none">
                     <p class="" style="color: blue">En attente</p>
+                  </button>
+                  <button type="button" class="btn align-self-center" *ngIf="ticket.Statuts == 'C'" disabled style="border: none">
+                    <p class="" style="color: blue">Wallet</p>
                   </button>
                 </div>
                 <hr>
@@ -231,7 +245,10 @@
                     <button type="button" class="btn" style="border: none"  *ngIf="ticketD.Statuts == 'E'" disabled>
                       <i class="material-icons" style="font-size: 26px; line-height: 26px;color: #1FC4E9;">work</i>
                     </button>
-
+                    <button type="button" class="btn" *ngIf="ticketD.Statuts == 'C'" (click)="callT(ticketD.idT,ticketD.numero,caissier.caisse)">
+                      <i class="material-icons" style="font-size: 26px; line-height: 26px;color: #1FC4E9">history</i>
+                    </button>
+                    
 
                   <h5 class="align-self-center">{{ ticketD.numS }}</h5>
 
@@ -246,6 +263,9 @@
                   </button>
                   <button type="button" class="btn" *ngIf="ticketD.Statuts == 'E'" disabled style="border: none">
                     <p class="" style="color: blue">En caisse</p>
+                  </button>
+                  <button type="button" class="btn" *ngIf="ticketD.Statuts == 'C'" disabled style="border: none">
+                    <p class="" style="color: blue">Retrait code</p>
                   </button>
 
 
@@ -263,4 +283,7 @@
         </div>
     </div>
   </div>
-</div>
+</div><br><br>
+
+
+

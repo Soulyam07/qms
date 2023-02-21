@@ -12,7 +12,7 @@
 <div class="card w-75 mx-auto mt-5" style="border-color: #ED4235;border-width: 5px;border-radius: 10px;">
   <div class="card-header text-white d-flex justify-content-between" style="background-color: #ED4235;">
     <h3>Quelle operation voulez-vous faire ?</h3>
-    <p class="align-self-center">{{formattedDateTime | date}}</p>
+    <!-- <p class="align-self-center">{{formattedDateTime | date}}</p> -->
   </div>
   <div class="card-body" >
     <div class="card-group text-center" >
@@ -39,7 +39,14 @@
           <!-- <div #printSection>
               1 Versent
           </div> -->
-        </button>   
+        </button>  
+        <button type="button" *ngIf="service.initService == 'W'" class="btn btn-light btn-lg mx-auto" style="width: 80%;height: 120px;border-radius: 10px;" (click)="addTicket(service.nomService,ticket.numero,service.initService,false)" >
+          <img src="../../../assets/img/wallet.png" alt="" width="70" height="70">
+          <h4 class="" style="color: #ED4235;margin-top: -5%;"><b>{{ service.nomService }}</b></h4>
+          <!-- <div #printSection>
+              1 Versent
+          </div> -->
+        </button>  
       </form>
              
       </div>
